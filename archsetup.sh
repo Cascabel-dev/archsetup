@@ -16,7 +16,7 @@ sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-backgrounds gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
 
 # Install core utilities
-sudo pacman -S --noconfirm nano mousepad gparted git curl wget eog
+sudo pacman -S --noconfirm nano mousepad gparted git curl wget eog htop
 
 # Install ZSH and plugins
 sudo pacman -S --noconfirm zsh zsh-syntax-highlighting zsh-autosuggestions
@@ -45,6 +45,8 @@ makepkg -si --noconfirm
 
 # Install theming
 yay -S --noconfirm adw-gtk3-git blueprint-compiler gradience 
+gradience
+killall python3
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
@@ -53,7 +55,7 @@ gradience-cli flatpak-overrides -e both
 cd /tmp
 wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/wallpapers/ghostpaper.jpg"
 gsettings set org.gnome.desktop.background picture-uri 'file:///tmp/ghostpaper.jpg'
-gsettings set org.gnome.desktop.background picture-uri 'file:///tmp/ghostpaper.jpg'
+gsettings set org.gnome.desktop.background picture-uri-dark 'file:///tmp/ghostpaper.jpg'
 
 # Enable and start GNOME
 sudo systemctl enable --now gdm
