@@ -46,7 +46,7 @@ makepkg -si --noconfirm
 
 # Install theming
 yay -S --noconfirm adw-gtk3-git blueprint-compiler gradience 
-nohup /usr/bin/gradience
+sudo nohup /usr/bin/gradience
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
