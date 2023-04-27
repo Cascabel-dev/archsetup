@@ -44,16 +44,16 @@ cd ~/yay
 makepkg -si --noconfirm
 
 # Install theming
-yay -S --noconfirm gradience-git
+yay -S --noconfirm gradience-git adw-gtk3-git
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
 
 # Set a wallpaper
-wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/wallpapers/ghostpaper.jpg" -o /tmp/wallpaper.jpg
-sudo chown $USER /tmp/wallpaper.jpg
-gsettings set org.gnome.desktop.background picture-uri-dark file:///tmp/wallpaper.jpg
-gsettings set org.gnome.desktop.background picture-uri file:///tmp/wallpaper.jpg
+cd /tmp
+wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/wallpapers/ghostpaper.jpg"
+gsettings set org.gnome.desktop.background picture-uri 'file:///tmp/ghostpaper.jpg'
+gsettings set org.gnome.desktop.background picture-uri 'file:///tmp/ghostpaper.jpg'
 
 # Enable and start GNOME
 sudo systemctl enable --now gdm
