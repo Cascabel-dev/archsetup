@@ -12,7 +12,7 @@ sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 #sudo pacman -Syy
 
 # Install minimal GNOME and important associated packages
-sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
+sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-backgrounds gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
 
 # Install core utilities
 sudo pacman -S --noconfirm nano mousepad gparted git
@@ -50,9 +50,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" > ~/.
 sudo pacman -S --noconfirm ttf-jetbrains-mono alacritty 
 gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
 touch ~/.zshrc
-echo "eval \"$(starship init zsh)\"" > ~/.zshrc 
 mkdir -p ~/.config
-touch ~/.config/starship.toml
 mkdir ~/.config/alacritty
 touch ~/.config/alacritty/alacritty.yml
 echo "import:
@@ -181,16 +179,22 @@ colors:
     indexed_colors:
         - { index: 16, color: \"#FAB387\" }
         - { index: 17, color: \"#F5E0DC\" }
-" > ~/.config/alacritty.alacritty.yml 
+" > ~/.config/alacritty/alacritty.yml 
 
 # Install Thunar and plugins
 sudo pacman -S --noconfirm thunar gvfs thunar-archive-plugin thunar-media-tags-plugin ffmpegthumbnailer tumbler
 
-# Install Aur Helper (Comment lines relating to yay and uncomment those relating to tizen to swap)
+# Install Aur Helper
 sudo pacman -S --noconfirm base-devel
 git clone https://aur.archlinux.org/yay.git ~/yay
 cd ~/yay
 makepkg -si
+
+# Install theming
+yay -S --noconfirm gradience
+gradience-cli download -n "Catppuccin Mocha"
+gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
+gradience-cli flatpak-overrides -e both
 
 # Set a wallpaper
 wget "https://github.com/Cascabel-dev/archsetup/blob/main/wallpapers/ghostpaper.jpg" -o /tmp/wallpaper.jpg
