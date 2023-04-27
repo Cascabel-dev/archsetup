@@ -1,9 +1,10 @@
 #/bin/bash
 
 # Ensure that system is updated before first run
+sudo pacman -Syyu
 
 # Enable Parallel Downloads for speed of script and further ease
-sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
+sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 
 # Enable multilib repository
 #sed 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
@@ -19,7 +20,7 @@ sudo pacman -S --noconfirm nano mousepad gparted git
 # Install ZSH and plugins
 sudo pacman -S --noconfirm zsh zsh-syntax-highlighting zsh-autosuggestions
 chsh -s $(which zsh)
-sudo sed 's/.*ZSH_AUTOSUGGEST_STRATEGY=(history)*./        ZSH_AUTOSUGGEST_STRATEGY=(completion)/g' /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+sudo sed -i 's/.*ZSH_AUTOSUGGEST_STRATEGY=(history)*./        ZSH_AUTOSUGGEST_STRATEGY=(completion)/g' /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 echo "\#colors
 autoload -U colors && colors
 PS1=\"%B%{$fg[cyan]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%&➢ %{$fg[cyan]%}]%{$reset_color%}$%b \"
@@ -187,11 +188,14 @@ sudo pacman -S --noconfirm thunar gvfs thunar-archive-plugin thunar-media-tags-p
 
 # Install Aur Helper (Comment lines relating to yay and uncomment those relating to tizen to swap)
 sudo pacman -S --noconfirm base-devel
-git clone https://aur.archlinux.org/yay.git ~/$USER
-cd ~/$USER/yay
+git clone https://aur.archlinux.org/yay.git ~/yay
+cd ~/yay
 makepkg -si
 
 # Set a wallpaper
 wget "https://github.com/Cascabel-dev/archsetup/blob/main/wallpapers/ghostpaper.jpg" -o /tmp/wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri-dark file:///tmp/wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri file:///tmp/wallpaper.jpg
+
+# Enable and start GNOME
+sudo systemctl enable --now gdm
