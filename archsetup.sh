@@ -14,6 +14,7 @@ sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 
 # Install minimal GNOME and important associated packages
 sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-backgrounds gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
+xdg-user-dirs-update 
 
 # Install core utilities
 sudo pacman -S --noconfirm nano mousepad gparted git curl wget eog htop
@@ -50,6 +51,7 @@ killall python3
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
+gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 
 # Set a wallpaper
 cd /tmp
