@@ -44,7 +44,7 @@ cd ~/yay
 makepkg -si --noconfirm
 
 # Install theming
-yay -S --noconfirm gradience
+yay -S --noconfirm gradience-cli
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
