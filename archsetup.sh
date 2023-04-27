@@ -46,11 +46,12 @@ makepkg -si --noconfirm
 
 # Install theming
 yay -S --noconfirm adw-gtk3-git blueprint-compiler gradience 
-nohup /usr/bin/gradience | grep -i "fallback to adwaita" & killall python3
+nohup /usr/bin/gradience
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+killall python3
 
 # Set a wallpaper
 cd /tmp
