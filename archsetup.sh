@@ -16,13 +16,13 @@ sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-backgrounds gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
 
 # Install core utilities
-sudo pacman -S --noconfirm nano mousepad gparted git
+sudo pacman -S --noconfirm nano mousepad gparted git curl wget eog
 
 # Install ZSH and plugins
 sudo pacman -S --noconfirm zsh zsh-syntax-highlighting zsh-autosuggestions
 chsh -s $(which zsh)
 sudo sed -i 's/.*ZSH_AUTOSUGGEST_STRATEGY=(history)*./        ZSH_AUTOSUGGEST_STRATEGY=(completion)/g' /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/configs/.zshrc" -o ~/.zshrc 
+curl --silent "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/configs/.zshrc" -o ~/.zshrc 
 
 
 # Install/configure terminal
@@ -32,7 +32,7 @@ touch ~/.zshrc
 mkdir -p ~/.config
 mkdir ~/.config/alacritty
 touch ~/.config/alacritty/alacritty.yml
-wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/configs/alacritty.yml" -o ~/.config/alacritty/alacritty.yml 
+curl --silent "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/configs/alacritty.yml" -o ~/.config/alacritty/alacritty.yml 
 
 # Install Thunar and plugins
 sudo pacman -S --noconfirm thunar gvfs thunar-archive-plugin thunar-media-tags-plugin ffmpegthumbnailer tumbler
@@ -50,7 +50,7 @@ gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
 
 # Set a wallpaper
-wget "https://github.com/Cascabel-dev/archsetup/blob/main/wallpapers/ghostpaper.jpg" -o /tmp/wallpaper.jpg
+wget "https://raw.githubusercontent.com/Cascabel-dev/archsetup/main/wallpapers/ghostpaper.jpg" -o /tmp/wallpaper.jpg
 sudo chown $USER /tmp/wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri-dark file:///tmp/wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri file:///tmp/wallpaper.jpg
