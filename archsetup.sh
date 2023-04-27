@@ -46,9 +46,7 @@ makepkg -si --noconfirm
 
 # Install theming
 yay -S --noconfirm adw-gtk3-git blueprint-compiler gradience 
-gradience
-sleep 1s
-killall python3
+nohup /usr/bin/gradience | grep -i "fallback to adwaita" & killall python3
 gradience-cli download -n "Catppuccin Mocha"
 gradience-cli apply -n "Catppuccin Mocha" --gtk "both"
 gradience-cli flatpak-overrides -e both
