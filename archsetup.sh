@@ -12,7 +12,7 @@ sudo sed -i 's/.*ParallelDownloads.*/ParallelDownloads = 50/' /etc/pacman.conf
 #sudo pacman -Syy
 
 # Install minimal GNOME and important associated packages
-sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-settings daemon gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
+sudo pacman -S --noconfirm pipewire gnome-shell gdm gnome-control-center gnome-keyring gnome-session gnome-shell-extensions xdg-user-dirs-gtk gnome-tweaks 
 
 # Install core utilities
 sudo pacman -S --noconfirm nano mousepad gparted git
